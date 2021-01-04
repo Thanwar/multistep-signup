@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
-
+import Stepper from './Components/Stepper';
 function App() {
   return (
-    <div className="App">
-      <h1>project 10</h1>
+    <div>
+      <div className="Stepper">
+        <Stepper />
+      </div>
     </div>
   );
 }
