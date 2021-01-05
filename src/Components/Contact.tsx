@@ -9,7 +9,8 @@ export const Contact = () => {
     },
     validationSchema: Yup.object({
         contact: Yup.string()
-        .max(15, 'Must be 15 characters or less')
+        .max(15, 'Must be less than 15 digits')
+        .min(11, 'Must be more than 11 digits')
         .required('Required'),
 
     }),
