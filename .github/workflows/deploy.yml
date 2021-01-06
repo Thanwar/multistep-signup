@@ -35,4 +35,4 @@ jobs:
     - name: install surge
       run: npm install -g surge
     - name: run surge
-      run: surge ./build thanwar-spacex.surge.sh --token ${{secrets.SURGE_TOKEN}}
+      run: surge ./build thanwar-form.surge.sh --token ${{secrets.SURGE_TOKEN}}
