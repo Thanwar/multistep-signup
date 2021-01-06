@@ -5,8 +5,8 @@ import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { SignupForm } from "./Signup";
-import { Contact } from "./Contact";
+import SignupForm  from "./Signup";
+import PassForm from "./Password";
 import { Review } from "./Review";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function getSteps() {
-  return ["General Info", "Contact", "Sign Up"];
+  return ["General Info", "Password", "Sign Up"];
 }
 
 function getStepContent(step: number) {
@@ -33,7 +33,7 @@ function getStepContent(step: number) {
     case 0:
       return <SignupForm />;
     case 1:
-      return <Contact />;
+      return <PassForm />;
     case 2:
       return <Review />;
     default:
@@ -45,11 +45,7 @@ export default function HorizontalLinearStepper() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
-
-  const isStepOptional = (step: number) => {
-    return step === 1;
-  };
-
+  
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -68,11 +64,6 @@ export default function HorizontalLinearStepper() {
         {steps.map((label, index) => {
           const stepProps: { completed?: boolean } = {};
           const labelProps: { optional?: React.ReactNode } = {};
-          if (isStepOptional(index)) {
-            labelProps.optional = (
-              <Typography variant="caption">Optional</Typography>
-            );
-          }
           return (
             <Step key={label} {...stepProps}>
               <StepLabel {...labelProps}>{label}</StepLabel>
@@ -84,7 +75,7 @@ export default function HorizontalLinearStepper() {
         {activeStep === steps.length ? (
           <div>
             <Typography className={classes.instructions}>
-              All steps completed - you&apos;re finished
+              <h1>Sign Up completed successfully...</h1>
             </Typography>
             <Button
               onClick={handleReset}
